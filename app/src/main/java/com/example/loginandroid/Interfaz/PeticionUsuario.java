@@ -18,8 +18,7 @@ public interface PeticionUsuario {
                                   @Query("fechaNacimiento") String fecha_Nacimiento*/);
 
     @POST("api/user/login")
-    Call<Usuario> verificar(@Query("email") String correo,
-                            @Query("password") String contrasenia);
+    Call<Usuario> verificarUsuario(@Body Usuario usuario);
 
     /*@POST("recuperarContrasenia")
     Call<Usuario> recuperar(@Query("correo") String correo);

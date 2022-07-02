@@ -2,31 +2,42 @@ package com.example.loginandroid.Model;
 
 public class Usuario {
     private int ID;
-    private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private String correo;
-    private String contrasenia;
+    private String name;
+    private String lastname_pat;
+    private String lastname_mat;
+    private String email;
+    private String password;
     private String contrasenia2;
     private String fechaNacimiento;
-    private String status;
     private String codigoConfirmacion;
     private String tokenRecovery;
     private String create_at;
     private String update_at;
     private String estatus;
+
+    private String status;
     private String mensaje;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    private String message;
 
     public Usuario() {
     }
 
     public Usuario(int ID, String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String contrasenia2, String fechaNacimiento, String status, String codigoConfirmacion, String tokenRecovery, String create_at, String update_at, String estatus, String mensaje) {
         this.ID = ID;
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.correo = correo;
-        this.contrasenia = contrasenia;
+        this.name = nombre;
+        this.lastname_pat = apellidoPaterno;
+        this.lastname_mat = apellidoMaterno;
+        this.email = correo;
+        this.password = contrasenia;
         this.contrasenia2 = contrasenia2;
         this.fechaNacimiento = fechaNacimiento;
         this.status = status;
@@ -38,11 +49,11 @@ public class Usuario {
         this.mensaje = mensaje;
     }
     public Usuario(String nombre, String apellidoPaterno, String apellidoMaterno, String correo, String contrasenia, String contrasenia2, String fechaNacimiento) {
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.correo = correo;
-        this.contrasenia = contrasenia;
+        this.name = nombre;
+        this.lastname_pat = apellidoPaterno;
+        this.lastname_mat = apellidoMaterno;
+        this.email = correo;
+        this.password = contrasenia;
         this.contrasenia2 = contrasenia2;
         this.fechaNacimiento = fechaNacimiento;
     }
@@ -54,44 +65,44 @@ public class Usuario {
         this.ID = ID;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
+    public String getLastname_pat() {
+        return lastname_pat;
     }
 
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
+    public void setLastname_pat(String lastname_pat) {
+        this.lastname_pat = lastname_pat;
     }
 
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
+    public String getLastname_mat() {
+        return lastname_mat;
     }
 
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+    public void setLastname_mat(String lastname_mat) {
+        this.lastname_mat = lastname_mat;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getContrasenia2() {
