@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface PeticionUsuario {
-    @POST("registroForm")
+    @POST("registro")
     Call<Usuario> registrar(@Body Usuario usuario/*@Query("nombre") String nombre,
                                   @Query("apellidoPaterno") String paterno,
                                   @Query("apellidoMaterno") String materno,
