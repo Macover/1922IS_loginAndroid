@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     public void irRegistro(View view){
-        Toast.makeText(getApplicationContext(), "Caragando...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Cargando...", Toast.LENGTH_LONG).show();
         /*Intent i = new Intent(LoginActivity.this, RegistroActivity.class);
         startActivity(i);*/
         Intent newIntent = new Intent(getApplicationContext(), RegistroActivity.class);
