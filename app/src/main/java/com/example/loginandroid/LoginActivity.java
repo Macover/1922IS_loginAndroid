@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btn_login = (Button) findViewById(R.id.btn_Registrar);
+        btn_login = (Button) findViewById(R.id.btnIniciarSesion);
         txtCorreo = (TextInputEditText) findViewById(R.id.in_correo);
         txtContrasenia = (TextInputEditText) findViewById(R.id.in_contrasenia1);
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Llena los campos", Toast.LENGTH_LONG).show();
                 }else{
                     varRetro = new Retrofit.Builder()
-                            .baseUrl("https://jnmlvuvn.lucusvirtual.es/api/auth/")
+                            .baseUrl("https://viqoxwhm.lucusvirtual.es/")
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();
                     PeticionUsuario peticion = varRetro.create(PeticionUsuario.class);
@@ -90,8 +90,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    public void registro(View view){
-        Intent i = new Intent(LoginActivity.this,RegistroActivity.class);
+    public void irRegistro(View view){
+        Intent i = new Intent(LoginActivity.this, RegistroActivity.class);
         startActivity(i);
     }
 }

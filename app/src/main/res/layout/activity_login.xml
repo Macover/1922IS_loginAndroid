@@ -56,25 +56,7 @@
         android:orientation="horizontal"
         android:layout_weight="0.003"
         android:gravity="right"
-        >
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="¿olvidate tu contraseña? "
-            android:textSize="15dp"
-            />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txt_irRecuperar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Restablecer."
-            android:textColor="@color/md_theme_light_primary"
-            android:textSize="15dp"
-            android:onClick="restablecer"
-            />
-
-    </LinearLayout>
+        />
     <LinearLayout
         android:id="@+id/layout_texts"
         android:layout_width="match_parent"
@@ -90,19 +72,19 @@
             android:text="¿No tienes una cuenta? "
             android:textSize="15dp"
             />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_irLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="irRegistro"
             android:text="Registrate aquí."
             android:textColor="@color/md_theme_light_primary"
-            android:textSize="15dp"
-            android:onClick="registro"
-            />
+            android:textSize="15dp" />
 
     </LinearLayout>
     <Button
-        android:id="@+id/btn_Registrar"
+        android:id="@+id/btnIniciarSesion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
