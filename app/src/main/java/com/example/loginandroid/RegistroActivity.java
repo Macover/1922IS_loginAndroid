@@ -12,7 +12,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.loginandroid.Interfaz.PeticionUsuario;
+import com.example.loginandroid.Model.Usuario;
+
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class RegistroActivity extends AppCompatActivity {
@@ -47,14 +56,49 @@ public class RegistroActivity extends AppCompatActivity {
         bn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registroApi rg = new registroApi();
-                try {
-                    rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), "2001-08-13");
-                    muestraToast(view,"registro exitoso");
-                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                }catch (Exception ex){
-                    muestraToast(view,"Error"+ex);
+                if(edNombre.getText().toString().equals("") || edApP.getText().toString().equals("") || edApM.getText().toString().equals("") || edCorreo.getText().toString().equals("") || edCont1.getText().toString().equals("") ||edCont2.getText().toString().equals("") || fechaNacimiento.getText().toString().equals("")){
+                    muestraToast(view, "Llena todos los campos");
+                }else{
+                    /*registroApi rg = new registroApi();
+                    try {
+                        rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), "2001-08-13");
+                        muestraToast(view,"registro exitoso");
+                        Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }catch (Exception ex){
+                        muestraToast(view,"Error"+ex);
+                    }*/
+                    Retrofit retrofit = new Retrofit.Builder()
+                            .baseUrl("https://viqoxwhm.lucusvirtual.es/api/user/")
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build();
+                    PeticionUsuario peticion = retrofit.create(PeticionUsuario.class);
+                    Usuario usuario = new Usuario();
+                    usuario.setName(edNombre.getText().toString());
+                    usuario.setApPat(edApP.getText().toString());
+                    usuario.setApMat(edApM.getText().toString());
+                    usuario.setEmail(edCorreo.getText().toString());
+                    usuario.setPassword(edCont1.getText().toString());
+                    usuario.setValidate(edCont2.getText().toString());
+                    usuario.setFecha_nacimiento("2001-05-01");
+                    usuario.setCode("1970-01-01 02:07:38");
+                    Call<Usuario> registro = peticion.registrar(usuario);
+                    registro.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            if (!response.isSuccessful()){
+                                Toast.makeText(getApplicationContext(), "Error revisa correo o contrasenia", Toast.LENGTH_LONG).show();
+                            }else{
+                                Usuario usuario = response.body();
+                                muestraToast(view, "OK");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+
+                        }
+                    });
                 }
 
             }
@@ -64,6 +108,7 @@ public class RegistroActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                 startActivity(intent);
+
             }
         });
     }
