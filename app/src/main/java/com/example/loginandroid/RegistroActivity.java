@@ -59,46 +59,52 @@ public class RegistroActivity extends AppCompatActivity {
                 if(edNombre.getText().toString().equals("") || edApP.getText().toString().equals("") || edApM.getText().toString().equals("") || edCorreo.getText().toString().equals("") || edCont1.getText().toString().equals("") ||edCont2.getText().toString().equals("") || fechaNacimiento.getText().toString().equals("")){
                     muestraToast(view, "Llena todos los campos");
                 }else{
-                    /*registroApi rg = new registroApi();
-                    try {
-                        rg.registrar(edNombre.getText().toString(), edApP.getText().toString(), edApM.getText().toString(), edCorreo.getText().toString(), edCont1.getText().toString(), edCont2.getText().toString(), "2001-08-13");
-                        muestraToast(view,"registro exitoso");
-                        Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                    }catch (Exception ex){
-                        muestraToast(view,"Error"+ex);
-                    }*/
-                    Retrofit retrofit = new Retrofit.Builder()
-                            .baseUrl("https://viqoxwhm.lucusvirtual.es/api/user/")
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-                    PeticionUsuario peticion = retrofit.create(PeticionUsuario.class);
-                    Usuario usuario = new Usuario();
-                    usuario.setName(edNombre.getText().toString());
-                    usuario.setApPat(edApP.getText().toString());
-                    usuario.setApMat(edApM.getText().toString());
-                    usuario.setEmail(edCorreo.getText().toString());
-                    usuario.setPassword(edCont1.getText().toString());
-                    usuario.setValidate(edCont2.getText().toString());
-                    usuario.setFecha_nacimiento("2001-05-01");
-                    usuario.setCode("1970-01-01 02:07:38");
-                    Call<Usuario> registro = peticion.registrar(usuario);
-                    registro.enqueue(new Callback<Usuario>() {
-                        @Override
-                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                            if (!response.isSuccessful()){
-                                Toast.makeText(getApplicationContext(), "Error revisa correo o contrasenia", Toast.LENGTH_LONG).show();
+                    if( edCorreo.getText().toString().length() < 4){
+                        muestraToast(view, "Ingresa un correo electronico valido");
+                    }else{
+                        if(edCont1.getText().toString().length() < 8 || edCont2.getText().toString().length() < 8  ){
+                            muestraToast(view, "Las contraseñas minimo de 8 caracteres");
+                        }else{
+                            if(edCont1.getText().toString().equals(edCont2.getText().toString())){
+                                Retrofit retrofit = new Retrofit.Builder()
+                                        .baseUrl("https://viqoxwhm.lucusvirtual.es/api/user/")
+                                        .addConverterFactory(GsonConverterFactory.create())
+                                        .build();
+                                PeticionUsuario peticion = retrofit.create(PeticionUsuario.class);
+                                Usuario usuario = new Usuario();
+                                usuario.setName(edNombre.getText().toString());
+                                usuario.setApPat(edApP.getText().toString());
+                                usuario.setApMat(edApM.getText().toString());
+                                usuario.setEmail(edCorreo.getText().toString());
+                                usuario.setPassword(edCont1.getText().toString());
+                                usuario.setValidate(edCont2.getText().toString());
+                                usuario.setFecha_nacimiento("2001-05-01");
+                                usuario.setCode("1970-01-01 02:07:38");
+                                Call<Usuario> registro = peticion.registrar(usuario);
+                                registro.enqueue(new Callback<Usuario>() {
+                                    @Override
+                                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                        if (!response.isSuccessful()){
+                                            Toast.makeText(getApplicationContext(), "Error correo ya registrado ", Toast.LENGTH_LONG).show();
+                                        }else{
+                                            Usuario usuario = response.body();
+                                            muestraToast(view, usuario.getMessage());
+                                            Intent i = new Intent(RegistroActivity.this, LoginActivity.class);
+                                            startActivity(i);
+                                            finishAffinity();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Usuario> call, Throwable t) {
+
+                                    }
+                                });
                             }else{
-                                Usuario usuario = response.body();
-                                muestraToast(view, "OK");
+                                muestraToast(view, "Las contraseñas no son iguales");
                             }
                         }
-
-                        @Override
-                        public void onFailure(Call<Usuario> call, Throwable t) {
-
-                        }
-                    });
+                    }
                 }
 
             }

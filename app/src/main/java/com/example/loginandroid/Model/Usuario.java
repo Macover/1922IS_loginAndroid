@@ -2,14 +2,20 @@ package com.example.loginandroid.Model;
 
 public class Usuario {
     private int ID;
+    private int id;
     private String name;
     private String lastname_pat;
     private String lastname_mat;
+    private String apPat;
+    private String apMat;
     private String email;
     private String password;
     private String contrasenia2;
     private String fechaNacimiento;
+    private String fecha_nacimiento;
     private String codigoConfirmacion;
+    private String code;
+    private String validate;
     private String tokenRecovery;
     private String create_at;
     private String update_at;
@@ -57,6 +63,79 @@ public class Usuario {
         this.contrasenia2 = contrasenia2;
         this.fechaNacimiento = fechaNacimiento;
     }
+
+    public Usuario(int ID, int id, String name, String lastname_pat, String lastname_mat, String apPat, String apMat, String email, String password, String contrasenia2, String fechaNacimiento, String feecha_nacimiento, String codigoConfirmacion, String code, String tokenRecovery, String create_at, String update_at, String estatus, String status, String mensaje, String message) {
+        this.ID = ID;
+        this.id = id;
+        this.name = name;
+        this.lastname_pat = lastname_pat;
+        this.lastname_mat = lastname_mat;
+        this.apPat = apPat;
+        this.apMat = apMat;
+        this.email = email;
+        this.password = password;
+        this.contrasenia2 = contrasenia2;
+        this.fechaNacimiento = fechaNacimiento;
+        this.fecha_nacimiento = feecha_nacimiento;
+        this.codigoConfirmacion = codigoConfirmacion;
+        this.code = code;
+        this.tokenRecovery = tokenRecovery;
+        this.create_at = create_at;
+        this.update_at = update_at;
+        this.estatus = estatus;
+        this.status = status;
+        this.mensaje = mensaje;
+        this.message = message;
+    }
+
+    public String getValidate() {
+        return validate;
+    }
+
+    public void setValidate(String validate) {
+        this.validate = validate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getApPat() {
+        return apPat;
+    }
+
+    public void setApPat(String apPat) {
+        this.apPat = apPat;
+    }
+
+    public String getApMat() {
+        return apMat;
+    }
+
+    public void setApMat(String apMat) {
+        this.apMat = apMat;
+    }
+
+    public String getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+
+    public void setFecha_nacimiento(String fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public int getID() {
         return ID;
     }

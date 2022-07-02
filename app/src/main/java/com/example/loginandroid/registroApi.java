@@ -1,4 +1,4 @@
-package com.example.loginandroid;
+/*package com.example.loginandroid;
 import com.example.loginandroid.Interfaz.PeticionUsuario;
 import com.example.loginandroid.Model.Usuario;
 
@@ -40,13 +40,13 @@ public class registroApi {
                 content+="Correo: "+usuario.getCorreo()+"\n";
                 content+="Contraseña: "+usuario.getContrasenia()+"\n";
                 content+="Fecha: nacimiento"+usuario.getFechaNacimiento()+"\n";*/
-                }
+                //}
 
-                @Override
-                public void onFailure(Call<Usuario> call, Throwable t) {
+//                @Override
+            /*    public void onFailure(Call<Usuario> call, Throwable t) {
                     error="¡Falló!";
                 }
             });
 
     }
-}
+}*/
