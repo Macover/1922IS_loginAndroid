@@ -25,8 +25,8 @@ public class registroApi {
                         if (response.isSuccessful()) {
                             Usuario m = response.body();
                             System.out.println(call);
-                            System.out.println(m.getNombre());
-                            System.out.println(m.getCorreo());
+                            System.out.println(m.getName());
+                            System.out.println(m.getEmail());
 
                         }
                     } catch (Exception ex) {

@@ -15,7 +15,7 @@
         android:layout_weight="0.05"
         android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/md_theme_light_primary"
-        android:text="¡Inicia Sesion!"
+        android:text="¡Loogin!"
         android:textSize="45dp" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -24,6 +24,7 @@
         android:hint="Correo"
         app:startIconDrawable="@drawable/ic_outline_email_24"
         app:startIconContentDescription="string"
+        app:errorEnabled="true"
         android:layout_weight="0.02">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -77,8 +78,8 @@
             android:id="@+id/txt_irLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="irRegistro"
             android:text="Registrate aquí."
+            android:onClick="irRegistro"
             android:textColor="@color/md_theme_light_primary"
             android:textSize="15dp" />
 
