@@ -1,10 +1,13 @@
 package com.example.loginandroid.Interfaz;
 
+import com.example.loginandroid.Model.Pokemon;
 import com.example.loginandroid.Model.Usuario;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface PeticionUsuario {
@@ -19,6 +22,9 @@ public interface PeticionUsuario {
 
     @POST("api/user/login")
     Call<Usuario> verificarUsuario(@Body Usuario usuario);
+
+    @GET("/api/v2/pokemon/{name}")
+    Call<Pokemon> getPokemon(@Path("name") String name);
 
     /*@POST("recuperarContrasenia")
     Call<Usuario> recuperar(@Query("correo") String correo);

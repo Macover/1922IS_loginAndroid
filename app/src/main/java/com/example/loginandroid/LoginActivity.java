@@ -64,6 +64,8 @@ public class LoginActivity extends AppCompatActivity {
                                     content+= usuario.getLastname_pat()+"\t";
                                     content+= usuario.getLastname_mat()+"\t";
                                     Toast.makeText(getApplicationContext(), "Bienvenido "+ content, Toast.LENGTH_LONG).show();
+                                    Intent newIntent = new Intent(getApplicationContext(), pokeApi.class);
+                                    startActivity(newIntent);
                                 }else if(usuario.getStatus().equals("error")){
                                     String content = "";
                                     content+= usuario.getMensaje();
